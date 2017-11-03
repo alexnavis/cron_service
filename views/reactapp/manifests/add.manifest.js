@@ -6,7 +6,7 @@ module.exports = (periodic) => {
 
   return {
     containers: {
-      '/extension/cron/add': {
+      '/r-admin/extension/crons/add': {
         'layout': {
           'component': 'Hero',
           'props': {
@@ -49,7 +49,8 @@ module.exports = (periodic) => {
                         component: 'ResponsiveForm',
                         props: {
                           onSubmit:{
-                            url:'/crons?format=json&unflatten=true&updateprofile=true&updatecallback=true&handleupload=true&forcequerytobody=true&encryptfiles=true',
+                            // &handleupload=true
+                            url:'/crons?format=json&unflatten=true&updateprofile=true&updatecallback=true&forcequerytobody=true&encryptfiles=true',
                             options:{
                               method:'POST',
                             },

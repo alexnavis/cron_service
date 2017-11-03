@@ -1,3 +1,6 @@
 'use strict';
+const helper = require('./helper');
 
-module.exports = {};
+module.exports = {
+  helper,
+};

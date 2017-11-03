@@ -1,5 +1,7 @@
 'use strict';
-const periodic = require('periodicjs');
+const pretransform = require('./pretransform');
+const posttransform = require('./posttransform');
+
 function testPreTransform(req) {
   return new Promise((resolve, reject) => {
     periodic.logger.silly('sample pre transfrom', req.params.id);
@@ -14,18 +16,6 @@ function testPostTransform(req) {
 }
 
 module.exports = {
-  pre: {
-    GET: {
-      '/some/route/path/:id':[testPreTransform]
-    },
-    PUT: {
-    }
-  },
-  post: {
-    GET: {
-      '/another/route/test/:id':[testPostTransform]
-    },
-    PUT: {
-    }
-  }
-}
+  pre: pretransform,
+  post: posttransform,
+};

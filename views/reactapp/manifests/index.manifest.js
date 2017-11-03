@@ -6,7 +6,7 @@ module.exports = (periodic) => {
 
   return {
     containers: {
-      '/extension/crons': {
+      '/r-admin/extension/crons': {
         'layout': {
           'component': 'Hero',
           'props': {
@@ -40,7 +40,7 @@ module.exports = (periodic) => {
                     component: 'ResponsiveButton',
                     props: {
                       onClick: 'func:this.props.reduxRouter.push',
-                      onclickBaseUrl: '/extension/cron/add',
+                      onclickBaseUrl: '/r-admin/extension/cron/add',
                       buttonProps: {
                         size: 'isPrimary',
                       }
@@ -76,7 +76,7 @@ module.exports = (periodic) => {
                               sortid: '_id',
                               sortable: true,
                               link: {
-                                baseUrl: '/extension/crons/:id',
+                                baseUrl: '/r-admin/extension/crons/:id',
                                 params: [
                                   {
                                     key: ':id',
@@ -130,10 +130,10 @@ module.exports = (periodic) => {
                                     color: 'isSuccess',
                                   },
                                   onClick: 'func:this.props.fetchAction',
-                                  onclickBaseUrl: '/crons/setactive/:id/:status',
+                                  onclickBaseUrl: '/cron/setactive/:id?field=status',
                                   onclickLinkParams: [
                                     { 'key': ':id', 'val': '_id', },
-                                    { 'key': ':status', 'val': 'active'}
+                                    // { 'key': ':status', 'val': 'active'}
                                   ],
                                   'fetchProps': {
                                     'method': 'POST',
@@ -212,7 +212,7 @@ module.exports = (periodic) => {
                         },
                         asyncprops: {
                           'rows': [
-                            'crondata', 'crons',
+                            'crondata', 'data', 'crons', 'documents'
                           ],
                         },
                       },
@@ -225,7 +225,8 @@ module.exports = (periodic) => {
           }, ],
         },
         'resources': {
-          // crondata: `${reactadmin.manifest_prefix}crons/view/all?format=json`,
+          // crondata: '/test?format=json',
+          crondata: '/crons?format=json',
         },
         'onFinish': 'render',
       },
